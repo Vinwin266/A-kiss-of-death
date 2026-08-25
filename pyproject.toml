@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "meterline"
+version = "0.12.0"
+description = "A deterministic utility metering and tariff rating engine."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "Nikola Subotic", email = "nikolasudev@gmail.com" }]
+keywords = ["metering", "billing", "tariff", "utility", "deterministic"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Office/Business :: Financial",
+  "Typing :: Typed",
+]
+
+# No runtime dependencies, on purpose.  The engine claims that the same
+# dataset produces the same bytes years later; that claim is much easier to
+# defend when nothing underneath it can change between two runs.
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/nikolasu-dev/meterline"
+Source = "https://github.com/nikolasu-dev/meterline"
+
+[project.scripts]
+meterline = "meterline.cli.app:run"
+
+[tool.setuptools]
+packages = [
+  "meterline",
+  "meterline.audit",
+  "meterline.charge",
+  "meterline.cli",
+  "meterline.cli.commands",
+  "meterline.core",
+  "meterline.io",
+  "meterline.meterdata",
+  "meterline.model",
+  "meterline.policy",
+  "meterline.rating",
+  "meterline.report",
+  "meterline.tariff",
+  "meterline.tariff.components",
+  "meterline.tax",
+  "meterline.timeline",
+]
+
+[tool.setuptools.package-data]
+meterline = ["py.typed"]

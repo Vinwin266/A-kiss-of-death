@@ -1,0 +1,196 @@
+{
+  "accounts": [
+    {
+      "account_id": "ac-t1",
+      "name": "Example Customer",
+      "service_point_ids": [
+        "sp-t1"
+      ]
+    }
+  ],
+  "cycle_schedules": [
+    {
+      "count": 3,
+      "first_month": "2025-05",
+      "read_day": 10,
+      "route": "T1",
+      "service_point_id": "sp-t1"
+    }
+  ],
+  "enrollments": [
+    {
+      "from": "2025-04-11T04:00:00Z",
+      "service_point_id": "sp-t1",
+      "tariff": "RES-STD"
+    }
+  ],
+  "jurisdictions": [
+    {
+      "code": "us-ny",
+      "label": "New York State",
+      "rules": [
+        {
+          "basis": "subtotal",
+          "code": "tax.state",
+          "kind": "percent",
+          "label": "State utility tax",
+          "order": 10,
+          "rate": "2.35"
+        }
+      ]
+    }
+  ],
+  "meterline": "0.12",
+  "meters": [
+    {
+      "kind": "electric",
+      "meter_id": "mt-t1",
+      "registers": [
+        {
+          "digits": 5,
+          "register_id": "rg-t1",
+          "unit": "kWh"
+        }
+      ],
+      "service_point_id": "sp-t1"
+    }
+  ],
+  "name": "tiny",
+  "premises": [
+    {
+      "address": "1 Short Row",
+      "jurisdiction": "us-ny",
+      "locality": "Riverside",
+      "premise_id": "pr-t1",
+      "region": "NY"
+    }
+  ],
+  "profile": {
+    "base": "legacy-cooperative"
+  },
+  "reads": [
+    {
+      "at": "2025-04-11T04:00:00Z",
+      "meter_id": "mt-t1",
+      "quality": "valid",
+      "read_type": "actual",
+      "register_id": "rg-t1",
+      "source": "route",
+      "value": "1000"
+    },
+    {
+      "at": "2025-05-11T04:00:00Z",
+      "meter_id": "mt-t1",
+      "quality": "valid",
+      "read_type": "actual",
+      "register_id": "rg-t1",
+      "source": "route",
+      "value": "1430"
+    },
+    {
+      "at": "2025-06-11T04:00:00Z",
+      "meter_id": "mt-t1",
+      "quality": "valid",
+      "read_type": "actual",
+      "register_id": "rg-t1",
+      "source": "route",
+      "value": "1942"
+    },
+    {
+      "at": "2025-07-11T04:00:00Z",
+      "meter_id": "mt-t1",
+      "quality": "valid",
+      "read_type": "actual",
+      "register_id": "rg-t1",
+      "source": "route",
+      "value": "2330"
+    }
+  ],
+  "service_points": [
+    {
+      "account_id": "ac-t1",
+      "kind": "residential",
+      "meter_ids": [
+        "mt-t1"
+      ],
+      "premise_id": "pr-t1",
+      "route": "T1",
+      "service_point_id": "sp-t1",
+      "zone": "America/New_York"
+    }
+  ],
+  "tariffs": [
+    {
+      "code": "RES-STD",
+      "components": [
+        {
+          "amount": "14.75",
+          "code": "res.basic",
+          "kind": "fixed",
+          "label": "Basic service charge",
+          "per": "month",
+          "side": "delivery"
+        },
+        {
+          "blocks": [
+            {
+              "label": "first 600 kWh",
+              "limit": "600",
+              "rate": "0.10920"
+            },
+            {
+              "label": "over 600 kWh",
+              "limit": null,
+              "rate": "0.13140"
+            }
+          ],
+          "code": "res.energy",
+          "determinant": "energy.total",
+          "kind": "tiered",
+          "label": "Energy charge",
+          "side": "supply"
+        },
+        {
+          "code": "res.ee",
+          "determinant": "energy.total",
+          "kind": "rider",
+          "label": "Energy efficiency rider",
+          "rate": "0.00412",
+          "rider_kind": "per_unit"
+        },
+        {
+          "basis": "before_credits",
+          "code": "res.storm",
+          "kind": "rider",
+          "label": "Storm recovery rider",
+          "rate": "1.9",
+          "rider_kind": "percent"
+        },
+        {
+          "amount": "22.00",
+          "code": "res.minimum",
+          "kind": "minimum",
+          "label": "Minimum charge"
+        },
+        {
+          "basis": "subtotal",
+          "cap": "35.00",
+          "code": "res.assist",
+          "kind": "discount",
+          "label": "Customer assistance discount",
+          "percent": "18",
+          "programme": "LIHEAP"
+        }
+      ],
+      "currency": "USD",
+      "description": "Standard residential rate with a two-block energy charge.",
+      "effective_from": "2025-04-11T04:00:00Z",
+      "energy_unit": "kWh",
+      "name": "Residential Service",
+      "service_kinds": [
+        "residential"
+      ],
+      "version": "1"
+    }
+  ]
+}
